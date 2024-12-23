@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1m4gmmsmuvix"]
+
+[ext_resource type="Script" path="res://Global/MonsterDatabase.gd" id="1_3vwq8"]
+[ext_resource type="Script" path="res://Global/Monster.gd" id="2_kwjkt"]
+[ext_resource type="Resource" uid="uid://bre0eep0cdgnk" path="res://MonsterDatabase/Monsters/mon_0.tres" id="3_nc37n"]
+[ext_resource type="Resource" uid="uid://c708aa3wgoreb" path="res://MonsterDatabase/Monsters/mon_1.tres" id="4_jcgwf"]
+
+[node name="MonsterData" type="Node"]
+script = ExtResource("1_3vwq8")
+monsters = Array[ExtResource("2_kwjkt")]([ExtResource("3_nc37n"), ExtResource("4_jcgwf")])

@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://h5psmhgkromk"]
+
+[ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_8mnlo"]
+[ext_resource type="Texture2D" uid="uid://bp83vf7ier870" path="res://assets/placeholder.png" id="2_g11fd"]
+[ext_resource type="Script" path="res://script/player.gd" id="2_lrq0g"]
+[ext_resource type="Resource" uid="uid://jdcmlnhyf2wl" path="res://Baits/bait_s.tres" id="3_uoks4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu4fm"]
+size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_srbsn"]
+radius = 16.0
+
+[node name="Player" groups=["Player"] instance=ExtResource("1_8mnlo")]
+script = ExtResource("2_lrq0g")
+bait = ExtResource("3_uoks4")
+movement_type = 2
+
+[node name="Sprite" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_g11fd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_bu4fm")
+
+[node name="bait_Hitbox" type="Area2D" parent="." index="2"]
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bait_Hitbox" index="0"]
+shape = SubResource("CircleShape2D_srbsn")
+debug_color = Color(1, 0.6, 0.192157, 0.419608)
+
+[connection signal="body_entered" from="bait_Hitbox" to="." method="_on_bait_hitbox_body_entered"]
+[connection signal="body_exited" from="bait_Hitbox" to="." method="_on_bait_hitbox_body_exited"]

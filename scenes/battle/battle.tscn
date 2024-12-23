@@ -1,0 +1,191 @@
+[gd_scene load_steps=6 format=3 uid="uid://yg4r743n7qyy"]
+
+[ext_resource type="Texture2D" uid="uid://3jlhdemmyy1j" path="res://assets/monsters/battle/mon_000.png" id="1_f2b3t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbcqy"]
+bg_color = Color(1, 0.227451, 0.0862745, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t6b4p"]
+bg_color = Color(0.2, 0.784314, 0.188235, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ao5vc"]
+bg_color = Color(0.205117, 0.205117, 0.205117, 1)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qc4o8"]
+bg_color = Color(0.2, 0.784314, 1, 1)
+border_color = Color(0, 0, 0, 1)
+
+[node name="Battle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ActionPanel" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 0)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
+
+[node name="Options" type="HBoxContainer" parent="ActionPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="Attack" type="Button" parent="ActionPanel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Bash"
+
+[node name="Pack" type="Button" parent="ActionPanel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Pack
+"
+
+[node name="Switch" type="Button" parent="ActionPanel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Swap
+"
+
+[node name="Tame" type="Button" parent="ActionPanel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Tame
+"
+
+[node name="Run" type="Button" parent="ActionPanel/Options"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "Scram
+"
+
+[node name="BattleContiner" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -140.0
+offset_right = 464.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayerContainer2" type="VBoxContainer" parent="BattleContiner"]
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Data" type="Label" parent="BattleContiner/PlayerContainer2"]
+layout_mode = 2
+text = "Name: ??? Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="BattleContiner/PlayerContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.51
+theme_override_styles/background = SubResource("StyleBoxFlat_wbcqy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t6b4p")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="ExpBar" type="ProgressBar" parent="BattleContiner/PlayerContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.99
+theme_override_styles/background = SubResource("StyleBoxFlat_ao5vc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_qc4o8")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Sprite" type="TextureRect" parent="BattleContiner/PlayerContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+texture = ExtResource("1_f2b3t")
+expand_mode = 4
+stretch_mode = 5
+flip_h = true
+
+[node name="EnemyContainer" type="VBoxContainer" parent="BattleContiner"]
+layout_mode = 2
+size_flags_horizontal = 6
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="Data" type="Label" parent="BattleContiner/EnemyContainer"]
+layout_mode = 2
+text = "Name: ??? Level: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="BattleContiner/EnemyContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wbcqy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t6b4p")
+step = 1.0
+value = 50.0
+show_percentage = false
+
+[node name="Sprite" type="TextureRect" parent="BattleContiner/EnemyContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.0
+texture = ExtResource("1_f2b3t")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="DialogPanel" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 0.54902)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -168.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="RichTextLabel" parent="DialogPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.1
+anchor_right = 0.99
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/italics_font_size = 21
+bbcode_enabled = true
+text = "[center][i]A Monster approches...[/i][/center]"
+scroll_following = true

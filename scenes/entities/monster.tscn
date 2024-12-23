@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dttred7ywb32v"]
+
+[ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_7vfh6"]
+[ext_resource type="Script" path="res://script/monster.gd" id="2_44fp1"]
+[ext_resource type="Resource" uid="uid://bre0eep0cdgnk" path="res://MonsterDatabase/Monsters/mon_0.tres" id="3_wjwc0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7hmna"]
+radius = 32.0
+
+[node name="Monster" groups=["Monster"] instance=ExtResource("1_7vfh6")]
+collision_layer = 8
+script = ExtResource("2_44fp1")
+monster_data = ExtResource("3_wjwc0")
+current_state = 0
+detection_range = 32
+movement_type = 1
+
+[node name="Detection Area" type="Area2D" parent="." index="0"]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area" index="0"]
+shape = SubResource("CircleShape2D_7hmna")
+
+[connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BaitData" load_steps=2 format=3 uid="uid://jdcmlnhyf2wl"]
+
+[ext_resource type="Script" path="res://Global/Bait.gd" id="1_3fv5n"]
+
+[resource]
+script = ExtResource("1_3fv5n")
+size = 0
+dmg = 1

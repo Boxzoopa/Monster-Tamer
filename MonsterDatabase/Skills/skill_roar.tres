@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillData" load_steps=2 format=3 uid="uid://d0gtxc4re2h5i"]
+
+[ext_resource type="Script" path="res://Global/Skill.gd" id="1_fi6o0"]
+
+[resource]
+script = ExtResource("1_fi6o0")
+name = "Roar"
+target = "Monster"
+skill_type = "Basic"
+damage = 0
+cost = 0
