@@ -1,20 +1,16 @@
 extends "res://script/character.gd"
 
-@onready var bait_hitbox: Area2D = $bait_Hitbox
-@onready var collision_shape: CollisionShape2D = bait_hitbox.get_node("CollisionShape2D")
-@export var bait: BaitData
-var bait_range = 5
-var bait_size_dmg = 1
-var bait_dmg = 1
 
-var not_baited = true
+@export var bait: BaitData
+var bait_range: int = 5
+var bait_dmg: int = 1
+var not_baited: bool = true
 var monster = null
 
-func _ready() -> void:
-	# Enable or disable bait hitbox initially
-	collision_shape.disabled = not_baited
+@onready var bait_hitbox: Area2D = $Baitbox
+@onready var bait_shape: CollisionShape2D = $Baitbox/CollisionShape2D2
 
-func _physics_process(delta: float) -> void:
+func _ready() -> void:
 	match bait.size:
 		Config.Bait_size.SMALL:
 			bait_range = 5
@@ -26,30 +22,26 @@ func _physics_process(delta: float) -> void:
 			bait_range = 1
 			bait_dmg = 3
 	
-	# Update the collision shape radius dynamically
-	collision_shape.shape.radius = (8 * bait_range) + 16
-	
+	bait_shape.disabled = not_baited
+	bait_hitbox.damage = (bait.dmg * bait_dmg)
+
+func _physics_process(delta: float) -> void:
+	bait_shape.shape.radius = (8 * bait_range) + 16
 	controllable_movement()
 	
-	# Update the bait hitbox based on player input
 	if Input.is_action_just_pressed("item_left"):
 		not_baited = false
 	if Input.is_action_just_released("item_left"):
 		not_baited = true
 	
-	collision_shape.disabled = not_baited
-
+	bait_shape.disabled = not_baited
+	
 func _on_bait_hitbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
 		monster = body
-		#print("Monster detected!")
-		
-		# Call tame method on the monster, if it exists
 		var damage = bait_dmg * bait.dmg
-		
-		monster.tame(damage)
+		#monster.tame(damage)
 
 func _on_bait_hitbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
-		#print("Monster exited!")
 		monster = null

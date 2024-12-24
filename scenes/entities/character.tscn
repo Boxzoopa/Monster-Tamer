@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://beywkyu68xkel"]
+[gd_scene load_steps=3 format=3 uid="uid://beywkyu68xkel"]
 
+[ext_resource type="PackedScene" uid="uid://b4tr7lal5n4l6" path="res://scenes/components/hurtbox_component.tscn" id="2_dq8gy"]
 [ext_resource type="Script" path="res://script/character.gd" id="2_v5dv3"]
 
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 15
 script = ExtResource("2_v5dv3")
+
+[node name="HurtBox" parent="." instance=ExtResource("2_dq8gy")]

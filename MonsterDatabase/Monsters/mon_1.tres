@@ -25,3 +25,4 @@ accuracy = 10
 Bait_level = 1
 danger_level = 0
 skills = Array[ExtResource("2_l2y00")]([ExtResource("3_garbq"), ExtResource("4_a5mub")])
+level_curve = 1

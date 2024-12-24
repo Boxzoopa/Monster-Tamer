@@ -7,30 +7,36 @@ enum States { PASSIVE, AGGRESSIVE, CALM }
 
 var passive_speed: int
 var aggressive_speed: int
-var danger_lvl
-
+var danger_lvl: int
 var bait_hp: int
 var calmed_down: bool = false
 var chill_timer_running: bool = false
 
 @onready var detection_area: Area2D = $"Detection Area"
-@onready var collision_shape: CollisionShape2D = $"Detection Area/CollisionShape2D"
+@onready var detection_shape: CollisionShape2D = $"Detection Area/CollisionShape2D"
+
+@onready var hurt_box: Area2D = $HurtBox
+
 @export var detection_range: int = 32
-@export var chill_timer: float = 60
+@export var chill_timer: float = 5
 @export var main_state: States = States.PASSIVE
 
+var max_hp: int
+var hp: int
+var defence: int
+
 func _ready() -> void:
-	# Ensure monster_data is valid before accessing its properties
 	if monster_data != null:
 		danger_lvl = monster_data.danger_level
 		passive_speed = monster_data.speed / 6
 		aggressive_speed = monster_data.speed / 2
 		bait_hp = monster_data.Bait_level
+		max_hp = monster_data.health
+		hp = max_hp
+		defence = monster_data.defence
 	else:
-		print("Error: monster_data is not assigned!")
-	
-	# Update the radius of the detection area
-	collision_shape.shape.radius = detection_range
+		Config.debug_msg("Error: monster_data is not assigned!")
+	detection_shape.shape.radius = detection_range
 
 func _physics_process(delta: float) -> void:
 	match current_state:
@@ -42,9 +48,8 @@ func _physics_process(delta: float) -> void:
 			handle_calm_state(delta)
 
 func handle_aggressive_state(delta: float) -> void:
-	collision_shape.disabled = false
+	detection_shape.disabled = false
 	max_speed = aggressive_speed
-	
 	if not calmed_down and target != null:
 		target_movement(target.global_position)
 	else:
@@ -52,50 +57,62 @@ func handle_aggressive_state(delta: float) -> void:
 		auto_movement(delta)
 
 func handle_passive_state(delta: float) -> void:
-	collision_shape.disabled = true
+	detection_shape.disabled = true
 	max_speed = passive_speed
 	auto_movement(delta)
 
 func handle_calm_state(delta: float) -> void:
-	collision_shape.disabled = true
-	max_speed = 0  # No movement in CALM state
+	detection_shape.disabled = true
+	max_speed = 0
 	if not chill_timer_running:
 		chill_timer_running = true
 		start_chill_timer()
 
 func start_chill_timer() -> void:
-	# Run the chill timer to reset the state after calming down
 	await get_tree().create_timer(chill_timer).timeout
 	calmed_down = false
 	chill_timer_running = false
 	current_state = main_state
 	bait_hp = monster_data.Bait_level
-	print("Chill timer ended. Returning to main state:", main_state)
+	Config.debug_msg(str("Chill timer ended. Returning to main state:", main_state))
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		target = body
 		if not calmed_down:
-			match danger_lvl:
-				Config.Danger_level.PASSIVE:
-					current_state = States.PASSIVE
-					collision_shape.shape.radius = 0
-				Config.Danger_level.SEMI_HOSTILE, Config.Danger_level.HOSTILE:
-					current_state = States.AGGRESSIVE
+			if danger_lvl == Config.Danger_level.PASSIVE:
+				current_state = States.PASSIVE
+				detection_shape.shape.radius = 0
+			else:
+				current_state = States.AGGRESSIVE
 		else:
 			current_state = States.CALM
 
 func _on_detection_area_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		target = null
-		if not calmed_down:
-			current_state = States.AGGRESSIVE
-		else:
-			current_state = States.CALM
+		current_state = States.CALM if calmed_down else States.AGGRESSIVE
 
-func tame(dmg: int):
-	bait_hp -= dmg
+func tame(damage: int) -> void:
+	bait_hp -= damage
 	if bait_hp <= 0:
 		calmed_down = true
 		current_state = States.CALM
-		print("Monster calmed down.")
+		Config.debug_msg("Monster calmed down.")
+
+func damage(base_dmg: int):
+	var actual_damage = base_dmg
+	actual_damage -= defence
+	
+	hp -= actual_damage
+	
+	#die()
+
+
+func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
+	if hitbox.is_in_group("Bait"):
+		Config.debug_msg("tame!")
+		tame(hitbox.damage)
+	elif hitbox.is_in_group("Harmful"):
+		damage(hitbox.damage)
+		Config.debug_msg("Harmed!")
