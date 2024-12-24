@@ -27,7 +27,10 @@ shape = SubResource("RectangleShape2D_x4pn7")
 
 [node name="Monster" parent="." instance=ExtResource("4_akh3i")]
 position = Vector2(72, 0)
+current_state = 1
 detection_range = 64
+chill_timer = 5.0
+main_state = 1
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Monster"]

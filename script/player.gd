@@ -29,9 +29,7 @@ func _physics_process(delta: float) -> void:
 	# Update the collision shape radius dynamically
 	collision_shape.shape.radius = (8 * bait_range) + 16
 	
-	
-	input_vector = process_input()
-	move()
+	controllable_movement()
 	
 	# Update the bait hitbox based on player input
 	if Input.is_action_just_pressed("item_left"):

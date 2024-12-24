@@ -13,6 +13,8 @@ script = ExtResource("2_44fp1")
 monster_data = ExtResource("3_wjwc0")
 current_state = 0
 detection_range = 32
+chill_timer = 60.0
+main_state = 0
 movement_type = 1
 
 [node name="Detection Area" type="Area2D" parent="." index="0"]
