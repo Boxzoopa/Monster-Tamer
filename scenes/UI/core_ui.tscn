@@ -1,0 +1,139 @@
+[gd_scene load_steps=9 format=3 uid="uid://byiavevoepr1p"]
+
+[ext_resource type="Texture2D" uid="uid://c5u2ixw73l5ag" path="res://assets/UI/heart.png" id="1_yyyxy"]
+[ext_resource type="Texture2D" uid="uid://bpebmflux6elo" path="res://assets/UI/coin.png" id="2_v1g78"]
+[ext_resource type="Texture2D" uid="uid://cuvw5bsrj5yv6" path="res://assets/UI/bait.png" id="3_0cs2b"]
+[ext_resource type="Texture2D" uid="uid://bcm5btf1hpfhp" path="res://assets/monsters/overworld/mon_000_o.png" id="4_nwj0e"]
+[ext_resource type="FontFile" uid="uid://cs8i7t8l075bf" path="res://assets/fonts/EsquireGenericGamepdFont_CS.ttf" id="5_pxgd8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vy0x"]
+bg_color = Color(0.054902, 0.054902, 0.054902, 0.592157)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Theme" id="Theme_bxojf"]
+Panel/styles/panel = SubResource("StyleBoxFlat_7vy0x")
+
+[sub_resource type="LabelSettings" id="LabelSettings_yhwvm"]
+font = ExtResource("5_pxgd8")
+font_size = 131
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_bxojf")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 188.0
+offset_bottom = 32.0
+
+[node name="Player Stats" type="HBoxContainer" parent="Panel"]
+layout_mode = 2
+offset_right = 180.0
+offset_bottom = 23.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="HP" type="HBoxContainer" parent="Panel/Player Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Player Stats/HP"]
+layout_mode = 2
+texture = ExtResource("1_yyyxy")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Panel/Player Stats/HP"]
+layout_mode = 2
+text = "10"
+
+[node name="Coins" type="HBoxContainer" parent="Panel/Player Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Player Stats/Coins"]
+layout_mode = 2
+texture = ExtResource("2_v1g78")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Panel/Player Stats/Coins"]
+layout_mode = 2
+text = "00"
+
+[node name="Bait" type="HBoxContainer" parent="Panel/Player Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Player Stats/Bait"]
+layout_mode = 2
+texture = ExtResource("3_0cs2b")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="Panel/Player Stats/Bait"]
+layout_mode = 2
+text = "10"
+
+[node name="Action Panel" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 188.0
+offset_bottom = 88.0
+alignment = 1
+
+[node name="A" type="PanelContainer" parent="Action Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Action Panel/A"]
+layout_mode = 2
+texture = ExtResource("4_nwj0e")
+
+[node name="Label" type="Label" parent="Action Panel/A"]
+layout_mode = 2
+
+[node name="B" type="PanelContainer" parent="Action Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Action Panel/B"]
+layout_mode = 2
+texture = ExtResource("4_nwj0e")
+
+[node name="X" type="PanelContainer" parent="Action Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Action Panel/X"]
+layout_mode = 2
+texture = ExtResource("4_nwj0e")
+
+[node name="Y" type="PanelContainer" parent="Action Panel"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Icon" type="TextureRect" parent="Action Panel/Y"]
+layout_mode = 2
+texture = ExtResource("4_nwj0e")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1240.0
+offset_bottom = 672.0
+label_settings = SubResource("LabelSettings_yhwvm")
+autowrap_mode = 3

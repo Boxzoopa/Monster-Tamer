@@ -17,6 +17,7 @@ enum Bait_size {
 }
 
 var print_debug = true # prints out any debug msg
+var scale = 1 # camera scale
 
 func debug_msg(msg):
 	if print_debug == true:
