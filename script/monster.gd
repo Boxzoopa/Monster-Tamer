@@ -16,6 +16,7 @@ var chill_timer_running: bool = false
 @onready var detection_shape: CollisionShape2D = $"Detection Area/CollisionShape2D"
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hurt_box: Area2D = $HurtBox
+@onready var hit_box: Area2D = $HitBox
 
 @export var detection_range: int = 32
 @export var chill_timer: float = 5
@@ -46,6 +47,7 @@ func _physics_process(delta: float) -> void:
 
 func handle_aggressive_state(delta: float) -> void:
 	detection_shape.disabled = false
+	hit_box.disabled = false
 	max_speed = aggressive_speed
 	if not calmed_down and target != null:
 		target_movement(target.global_position)
@@ -55,11 +57,13 @@ func handle_aggressive_state(delta: float) -> void:
 
 func handle_passive_state(delta: float) -> void:
 	detection_shape.disabled = true
+	hit_box.disabled = false
 	max_speed = passive_speed
 	auto_movement(delta)
 
 func handle_calm_state(delta: float) -> void:
 	detection_shape.disabled = true
+	hit_box.disabled = true
 	max_speed = 0
 	if not chill_timer_running:
 		chill_timer_running = true
@@ -90,20 +94,25 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 		target = null
 		current_state = States.CALM if calmed_down else States.AGGRESSIVE
 
-func tame(damage: int) -> void:
+func tame(damage: int):
 	bait_hp -= damage
 	if bait_hp <= 0:
 		calmed_down = true
 		current_state = States.CALM
 		Config.debug_msg("Monster calmed down.")
+	
+	return damage
 
 func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
 	if hitbox.is_in_group("Bait"):
 		Config.debug_msg("tame!")
-		tame(hitbox.damage)
+		var dmg = tame(hitbox.damage)
+		recieve_kb(hitbox.global_position, dmg)
+		
 	elif hitbox.is_in_group("Harmful"):
 		Config.debug_msg("Harmed!")
-		damage(hitbox.damage)
+		var dmg = damage(hitbox.damage)
+		recieve_kb(hitbox.global_position, dmg)
 
 
 func _on_monster_died() -> void:

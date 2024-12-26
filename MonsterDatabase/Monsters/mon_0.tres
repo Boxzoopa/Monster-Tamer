@@ -21,6 +21,6 @@ defence = 0
 soul = 10
 speed = 100
 Bait_level = 1
-danger_level = 0
+danger_level = 1
 skills = Array[ExtResource("2_ytiv8")]([ExtResource("4_yalvc"), ExtResource("3_7ymwt")])
 level_curve = 1

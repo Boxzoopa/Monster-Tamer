@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b4tr7lal5n4l6"]
 
-[node name="HurtBoxComponent" type="Area2D"]
+[node name="HurtBoxComponent" type="Area2D" groups=["Hurtbox"]]
 self_modulate = Color(1, 0.129412, 0.180392, 1)
 collision_layer = 0
 collision_mask = 0

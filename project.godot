@@ -22,8 +22,8 @@ MD="*res://Global/monster_database.tscn"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=576
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor_plugins]
 
@@ -35,6 +35,9 @@ Player=""
 Monster=""
 Bait=""
 Harmful=""
+Projectile=""
+Hurtbox=""
+Hitbox=""
 
 [input]
 
@@ -84,6 +87,7 @@ down={
 2d_physics/layer_3="Objects"
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Misc"
+2d_physics/layer_6="Projectiles"
 
 [rendering]
 

@@ -35,9 +35,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area" index="0"]
 shape = SubResource("CircleShape2D_7hmna")
 
-[node name="HurtBox" parent="." index="2"]
+[node name="HurtBox" parent="." index="2" groups=["Monster"]]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 34
 monitorable = true
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]

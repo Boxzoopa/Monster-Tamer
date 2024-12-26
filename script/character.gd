@@ -10,7 +10,11 @@ var auto_timer = max_auto_timer
 var current_auto_direction: Vector2 = Vector2.ZERO
 
 var input_vector: Vector2 = Vector2.ZERO
+var facing_vector: Vector2 = Vector2.DOWN
 var target = null
+
+@export var kb_enabled = true
+@export var kb_modifier: float = 20
 
 signal hp_changed(new_hp: int)
 signal max_hp_changed(new_hp: int)
@@ -50,6 +54,7 @@ func _physics_process(delta: float) -> void:
 
 func static_movement() -> void:
 	input_vector = Vector2.ZERO
+	facing_vector = Vector2.DOWN
 	velocity = Vector2.ZERO
 
 func auto_movement(delta: float) -> void:
@@ -69,6 +74,10 @@ func move(input_direction: Vector2, delta: float = 1.0) -> void:
 	velocity.x = move_toward(velocity.x, max_speed * input_direction.x, accel)
 	velocity.y = move_toward(velocity.y, max_speed * input_direction.y, accel)
 	move_and_slide()
+	
+	# Update the facing vector only if there's non-zero input
+	if input_direction != Vector2.ZERO:
+		facing_vector = input_direction.normalized()
 
 
 func process_input() -> Vector2:
@@ -117,7 +126,29 @@ func damage(base_dmg: int):
 	
 	self.hp -= actual_damage
 	
-	Config.debug_msg(str(self.hp))
+	Config.debug_msg(str(self.name, " hp:", self.hp))
 	
 	if hp <= 0:
 		emit_signal("died")
+	
+	return actual_damage
+
+func recieve_kb(source_pos: Vector2, dmg: int):
+	if kb_enabled:
+		var kb_dir = source_pos.direction_to(global_position)
+		var kb_strength = dmg * kb_modifier
+		var knockback_target = global_position + (kb_dir * kb_strength)
+		
+		# Duration of the knockback in seconds
+		var kb_duration = 0.2
+		var elapsed_time = 0.0
+		
+		# Smoothly interpolate to the knockback target
+		while elapsed_time < kb_duration:
+			var t = elapsed_time / kb_duration
+			global_position = lerp(global_position, knockback_target, t)
+			elapsed_time += get_process_delta_time()
+			await get_tree().create_timer(0.01).timeout
+		
+		# Ensure final position is precisely the target
+		global_position = knockback_target

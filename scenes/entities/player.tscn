@@ -1,16 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://h5psmhgkromk"]
+[gd_scene load_steps=7 format=3 uid="uid://h5psmhgkromk"]
 
 [ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_8mnlo"]
 [ext_resource type="Texture2D" uid="uid://bp83vf7ier870" path="res://assets/placeholder.png" id="2_g11fd"]
 [ext_resource type="Script" path="res://script/player.gd" id="2_lrq0g"]
 [ext_resource type="Resource" uid="uid://jdcmlnhyf2wl" path="res://Baits/bait_s.tres" id="3_uoks4"]
-[ext_resource type="PackedScene" uid="uid://ddn6600l7nlbx" path="res://scenes/components/hitbox_component.tscn" id="5_342e0"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bu4fm"]
-size = Vector2(12, 12)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_srbsn"]
-radius = 16.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpuol"]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0kmi3"]
 radius = 8.0
@@ -26,17 +22,9 @@ movement_type = 2
 texture = ExtResource("2_g11fd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_bu4fm")
+shape = SubResource("CircleShape2D_tpuol")
 
-[node name="Baitbox" parent="." index="2" groups=["Harmful"] instance=ExtResource("5_342e0")]
-collision_layer = 2
-collision_mask = 8
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Baitbox" index="1"]
-shape = SubResource("CircleShape2D_srbsn")
-debug_color = Color(1, 0.6, 0.192157, 0.419608)
-
-[node name="HurtBox" parent="." index="3"]
+[node name="HurtBox" parent="." index="2"]
 collision_layer = 2
 collision_mask = 8
 
