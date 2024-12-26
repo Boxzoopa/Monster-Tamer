@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://cd35uds53pbjd"]
+
+[ext_resource type="Script" path="res://Global/Monster.gd" id="1_cj32i"]
+[ext_resource type="Script" path="res://Global/Skill.gd" id="2_p8ess"]
+[ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://MonsterDatabase/Skills/skill_roar.tres" id="3_vw2ai"]
+[ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://MonsterDatabase/Skills/skill_tackle.tres" id="4_o5dgg"]
+
+[resource]
+script = ExtResource("1_cj32i")
+name = "Cuislop"
+nickname = ""
+type1 = 3
+type2 = 3
+dex_num = 2
+level = 1
+exp = 0
+max_exp = 10
+health = 50
+power = 10
+defence = 5
+soul = 10
+speed = 100
+Bait_level = 1
+danger_level = 0
+skills = Array[ExtResource("2_p8ess")]([ExtResource("3_vw2ai"), ExtResource("4_o5dgg")])
+level_curve = 1

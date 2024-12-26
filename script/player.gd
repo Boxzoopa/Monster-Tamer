@@ -10,7 +10,14 @@ var monster = null
 @onready var bait_hitbox: Area2D = $Baitbox
 @onready var bait_shape: CollisionShape2D = $Baitbox/CollisionShape2D2
 
+@export var health: int = 10
+@export var def: int = 5
+
 func _ready() -> void:
+	defence = def
+	max_hp = health
+	hp = max_hp
+	
 	match bait.size:
 		Config.Bait_size.SMALL:
 			bait_range = 5
@@ -45,3 +52,8 @@ func _on_bait_hitbox_body_entered(body: Node2D) -> void:
 func _on_bait_hitbox_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Monster"):
 		monster = null
+
+func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
+	if hitbox.is_in_group("Monster"):
+		damage(1)
+		Config.debug_msg("Player hurt!")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c26dpy21ikfsd"]
+
+[ext_resource type="SpriteFrames" uid="uid://byycy7xnpo6vd" path="res://assets/monsters/overworld/mon_anims.tres" id="1_g7e5s"]
+
+[node name="OverworldMonSprite" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_g7e5s")
+animation = &"1"
+frame_progress = 0.878014
+speed_scale = 0.75

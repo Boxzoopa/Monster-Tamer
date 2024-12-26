@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dttred7ywb32v"]
+[gd_scene load_steps=9 format=3 uid="uid://dttred7ywb32v"]
 
 [ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_7vfh6"]
 [ext_resource type="Script" path="res://script/monster.gd" id="2_44fp1"]
+[ext_resource type="Resource" uid="uid://bre0eep0cdgnk" path="res://MonsterDatabase/Monsters/mon_0.tres" id="3_tfj0j"]
 [ext_resource type="PackedScene" uid="uid://ddn6600l7nlbx" path="res://scenes/components/hitbox_component.tscn" id="4_cert2"]
+[ext_resource type="PackedScene" uid="uid://c26dpy21ikfsd" path="res://scenes/entities/overworld_mon_sprite.tscn" id="5_6cltv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7hmna"]
 radius = 32.0
@@ -16,33 +18,39 @@ radius = 8.0
 [node name="Monster" groups=["Monster"] instance=ExtResource("1_7vfh6")]
 collision_layer = 8
 script = ExtResource("2_44fp1")
-monster_data = null
+monster_data = ExtResource("3_tfj0j")
 current_state = 0
 detection_range = 32
 chill_timer = 5.0
 main_state = 0
 
-[node name="Detection Area" type="Area2D" parent="." index="0"]
+[node name="Sprite" parent="." index="0" instance=ExtResource("5_6cltv")]
+animation = &"0"
+frame_progress = 0.0
+
+[node name="Detection Area" type="Area2D" parent="." index="1"]
 collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection Area" index="0"]
 shape = SubResource("CircleShape2D_7hmna")
 
-[node name="HurtBox" parent="." index="1"]
+[node name="HurtBox" parent="." index="2"]
 collision_layer = 8
 collision_mask = 2
 monitorable = true
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 shape = SubResource("CircleShape2D_ufoyf")
-debug_color = Color(0, 0.619608, 0, 0.419608)
 
-[node name="HitBox" parent="." index="2" instance=ExtResource("4_cert2")]
+[node name="HitBox" parent="." index="3" groups=["Monster"] instance=ExtResource("4_cert2")]
+collision_layer = 8
+collision_mask = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_711lj")
 
+[connection signal="died" from="." to="." method="_on_monster_died"]
 [connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

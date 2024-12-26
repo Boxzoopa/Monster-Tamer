@@ -9,3 +9,5 @@ collision_mask = 15
 script = ExtResource("2_v5dv3")
 
 [node name="HurtBox" parent="." instance=ExtResource("2_dq8gy")]
+
+[connection signal="died" from="." to="." method="_on_died"]

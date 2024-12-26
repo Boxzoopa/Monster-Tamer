@@ -1,0 +1,45 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://byycy7xnpo6vd"]
+
+[ext_resource type="Texture2D" uid="uid://bseg15gkpb3lp" path="res://assets/monsters/overworld/mon_o_1.png" id="1_mcnms"]
+[ext_resource type="Texture2D" uid="uid://ceu2vu1lb4o7r" path="res://assets/monsters/overworld/mon_o_2.png" id="2_jgjha"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7a38"]
+atlas = ExtResource("1_mcnms")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2064t"]
+atlas = ExtResource("1_mcnms")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q40jb"]
+atlas = ExtResource("2_jgjha")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mv5b"]
+atlas = ExtResource("2_jgjha")
+region = Rect2(16, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7a38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2064t")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q40jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5mv5b")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}]

@@ -3,7 +3,9 @@ extends Node
 const tile_size = 16
 enum Types {
 	BASIC, NATURE, FIRE, AQUA,
-	ELECTRIC
+	VOLT, BRAWN, BRAINS, TERROR,
+	FROST, METAL, MINERAL,
+	MYSTICAL, AIR
 }
 
 enum Danger_level {

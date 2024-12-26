@@ -14,16 +14,12 @@ var chill_timer_running: bool = false
 
 @onready var detection_area: Area2D = $"Detection Area"
 @onready var detection_shape: CollisionShape2D = $"Detection Area/CollisionShape2D"
-
+@onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hurt_box: Area2D = $HurtBox
 
 @export var detection_range: int = 32
 @export var chill_timer: float = 5
 @export var main_state: States = States.PASSIVE
-
-var max_hp: int
-var hp: int
-var defence: int
 
 func _ready() -> void:
 	if monster_data != null:
@@ -34,6 +30,7 @@ func _ready() -> void:
 		max_hp = monster_data.health
 		hp = max_hp
 		defence = monster_data.defence
+		sprite.play(str(monster_data.dex_num))
 	else:
 		Config.debug_msg("Error: monster_data is not assigned!")
 	detection_shape.shape.radius = detection_range
@@ -100,19 +97,14 @@ func tame(damage: int) -> void:
 		current_state = States.CALM
 		Config.debug_msg("Monster calmed down.")
 
-func damage(base_dmg: int):
-	var actual_damage = base_dmg
-	actual_damage -= defence
-	
-	hp -= actual_damage
-	
-	#die()
-
-
 func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
 	if hitbox.is_in_group("Bait"):
 		Config.debug_msg("tame!")
 		tame(hitbox.damage)
 	elif hitbox.is_in_group("Harmful"):
-		damage(hitbox.damage)
 		Config.debug_msg("Harmed!")
+		damage(hitbox.damage)
+
+
+func _on_monster_died() -> void:
+	Config.debug_msg("Monster Killed!")

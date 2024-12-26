@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://dvgxp8aqacbbb"]
+[gd_scene load_steps=4 format=4 uid="uid://dvgxp8aqacbbb"]
 
 [ext_resource type="PackedScene" uid="uid://dttred7ywb32v" path="res://scenes/entities/monster.tscn" id="4_akh3i"]
 [ext_resource type="PackedScene" uid="uid://h5psmhgkromk" path="res://scenes/entities/player.tscn" id="4_keg0g"]
-[ext_resource type="Texture2D" uid="uid://b7uqsgiul6u82" path="res://assets/placeholder_monster.png" id="5_e3pmb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kknjm"]
-size = Vector2(16, 16)
+size = Vector2(12, 12)
 
 [node name="test_world" type="Node2D"]
 
@@ -18,9 +17,6 @@ tile_map_data = PackedByteArray("AAD0//r/AgABAAMAAAD0//v/AgABAAMAAAD0//z/AgABAAM
 [node name="Monster" parent="." instance=ExtResource("4_akh3i")]
 position = Vector2(72, 0)
 metadata/_edit_group_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Monster"]
-texture = ExtResource("5_e3pmb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Monster"]
 shape = SubResource("RectangleShape2D_kknjm")

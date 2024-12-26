@@ -7,21 +7,19 @@
 
 [resource]
 script = ExtResource("1_nwrfv")
-name = "Slime"
+name = "Jelbo"
 nickname = ""
 type1 = 3
-type2 = 0
-battle_sprite = "res://assets/monsters/battle/mon_000.png"
-overworld_sprite = "res://assets/monsters/overworld/mon_000_o.png"
+type2 = 3
+dex_num = 1
 level = 1
 exp = 0
 max_exp = 10
 health = 50
 power = 10
 defence = 5
-spirit = 1
+soul = 10
 speed = 100
-accuracy = 10
 Bait_level = 1
 danger_level = 0
 skills = Array[ExtResource("2_l2y00")]([ExtResource("3_garbq"), ExtResource("4_a5mub")])
