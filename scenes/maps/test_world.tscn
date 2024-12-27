@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=4 uid="uid://dvgxp8aqacbbb"]
+[gd_scene load_steps=10 format=4 uid="uid://dvgxp8aqacbbb"]
 
 [ext_resource type="PackedScene" uid="uid://byiavevoepr1p" path="res://scenes/UI/core_ui.tscn" id="1_xhpng"]
 [ext_resource type="PackedScene" uid="uid://ldl55qs8l3xe" path="res://scenes/UI/dialog_box.tscn" id="2_nq035"]
 [ext_resource type="Resource" uid="uid://c708aa3wgoreb" path="res://resources/monsters/mon_1.tres" id="3_jwqrl"]
-[ext_resource type="PackedScene" uid="uid://dttred7ywb32v" path="res://scenes/entities/monster.tscn" id="4_akh3i"]
+[ext_resource type="PackedScene" uid="uid://dttred7ywb32v" path="res://scenes/entities/monster_base.tscn" id="4_akh3i"]
 [ext_resource type="PackedScene" uid="uid://h5psmhgkromk" path="res://scenes/entities/player.tscn" id="4_keg0g"]
 [ext_resource type="PackedScene" uid="uid://dbj0xde0bdxln" path="res://scenes/entities/npc_base.tscn" id="5_vbrj2"]
 [ext_resource type="Texture2D" uid="uid://b7uqsgiul6u82" path="res://assets/placeholder_monster.png" id="6_54aet"]
+[ext_resource type="JSON" path="res://resources/dialog/test.json" id="7_6h6ew"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e06on"]
 radius = 6.0
@@ -37,9 +38,11 @@ shape = SubResource("CircleShape2D_e06on")
 
 [node name="Character" parent="." instance=ExtResource("4_keg0g")]
 
-[node name="NPCBase" parent="." instance=ExtResource("5_vbrj2")]
+[node name="NPCBase2" parent="." instance=ExtResource("5_vbrj2")]
 position = Vector2(-24, -40)
-dialog = null
+dialog = ExtResource("7_6h6ew")
+movement_type = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="NPCBase"]
+[node name="Sprite2D" type="Sprite2D" parent="NPCBase2"]
+modulate = Color(1, 0.137255, 0, 1)
 texture = ExtResource("6_54aet")

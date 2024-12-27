@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://dttred7ywb32v"]
+[gd_scene load_steps=12 format=3 uid="uid://dttred7ywb32v"]
 
 [ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_7vfh6"]
-[ext_resource type="Script" path="res://script/monster.gd" id="2_44fp1"]
+[ext_resource type="Script" path="res://script/monsterbase.gd" id="2_44fp1"]
 [ext_resource type="Resource" uid="uid://bre0eep0cdgnk" path="res://resources/monsters/mon_0.tres" id="3_tfj0j"]
 [ext_resource type="PackedScene" uid="uid://ddn6600l7nlbx" path="res://scenes/components/hitbox_component.tscn" id="4_cert2"]
 [ext_resource type="PackedScene" uid="uid://c26dpy21ikfsd" path="res://scenes/entities/overworld_mon_sprite.tscn" id="5_6cltv"]
+[ext_resource type="PackedScene" uid="uid://ddro0vsigdqsv" path="res://scenes/components/dialog_trigger_component.tscn" id="6_gj6tv"]
+[ext_resource type="JSON" path="res://resources/dialog/tame_dialog.json" id="7_p0kon"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7hmna"]
 radius = 32.0
@@ -15,7 +17,10 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_711lj"]
 radius = 8.0
 
-[node name="Monster" groups=["Monster"] instance=ExtResource("1_7vfh6")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_1evlm"]
+radius = 16.0
+
+[node name="MonsterBase" groups=["Monster"] instance=ExtResource("1_7vfh6")]
 collision_layer = 8
 script = ExtResource("2_44fp1")
 monster_data = ExtResource("3_tfj0j")
@@ -23,6 +28,7 @@ current_state = 0
 detection_range = 32
 chill_timer = 5.0
 main_state = 0
+recruitment_difficulty = 0
 
 [node name="Sprite" parent="." index="0" instance=ExtResource("5_6cltv")]
 animation = &"0"
@@ -50,10 +56,17 @@ collision_mask = 2
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_711lj")
 
+[node name="DialogTriggerComponent" parent="." index="4" instance=ExtResource("6_gj6tv")]
+dialog = ExtResource("7_p0kon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogTriggerComponent" index="1"]
+shape = SubResource("CircleShape2D_1evlm")
+
 [connection signal="died" from="." to="." method="_on_monster_died"]
 [connection signal="body_entered" from="Detection Area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="Detection Area" to="." method="_on_detection_area_body_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="dialog_finished" from="DialogTriggerComponent" to="." method="_on_dialog_trigger_component_dialog_finished"]
 
 [editable path="HurtBox"]
 [editable path="HitBox"]

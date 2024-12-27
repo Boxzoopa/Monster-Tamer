@@ -13,15 +13,19 @@ extends Control
 @onready var choice_button_scn = preload("res://scenes/components/choice_button_component.tscn")
 var choice_btns: Array[Button] = []
 
+@onready var cause_node: Area2D = null
+
 signal dialog_finished
+signal _on_monster_tamed
 
 func _ready() -> void:
 	self.visible = false
 
-func start_dialog(dialog: JSON = dialog_json) -> void:
+func start_dialog(dialog: JSON = dialog_json, _state : Dictionary = state, cause = null) -> void:
+	cause_node = cause
 	Config.active = false
 	self.visible = true
-	ez_dialogue.start_dialogue(dialog, state)
+	ez_dialogue.start_dialogue(dialog, _state)
 
 func clear_dialog_box():
 	dialog_label.text = ""
@@ -62,3 +66,12 @@ func _on_ez_dialogue_dialogue_generated(response: DialogueResponse) -> void:
 func _on_dialog_finished() -> void:
 	self.visible = false
 	Config.active = true
+	if cause_node != null:
+		cause_node.dialog_finished.emit()
+
+
+func _on_ez_dialogue_custom_signal_received(value: Variant) -> void:
+	#var params = value.split(",")
+	MD.add_monster(Config.current_monster)
+	
+	MD.display_party()

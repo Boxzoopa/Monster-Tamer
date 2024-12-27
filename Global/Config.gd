@@ -19,7 +19,10 @@ enum Bait_size {
 var print_debug = true # prints out any debug msg
 var scale = 1 # camera scale
 
+var current_monster = ""
+
 var player_name = "Kuro"
+var player_lvl = 1
 var player_hp = 10
 var player_coins = 0
 var player_baits = 0

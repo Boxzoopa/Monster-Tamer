@@ -2,7 +2,7 @@
 
 [x] Branching Dialog
 [x] NPCs
-[] Taming Monsters
+[x] Taming Monsters
 
 -- 
 [] Attacks and Moves

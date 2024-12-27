@@ -17,10 +17,22 @@ var chill_timer_running: bool = false
 @onready var sprite: AnimatedSprite2D = $Sprite
 @onready var hurt_box: Area2D = $HurtBox
 @onready var hit_box: Area2D = $HitBox
+@onready var trigger: Area2D = $DialogTriggerComponent
 
 @export var detection_range: int = 32
 @export var chill_timer: float = 5
 @export var main_state: States = States.PASSIVE
+
+@export_group("Taming")
+@export_range(0, 100, 1) var recruitment_difficulty = 0
+#0, very easy, 100 very hard
+
+@onready var extra_considerations = {
+	"monster_name" : monster_data.name,
+	"success" : true,
+	"player_name": Config.player_name,
+	"tame_success": false
+}
 
 func _ready() -> void:
 	if monster_data != null:
@@ -44,6 +56,8 @@ func _physics_process(delta: float) -> void:
 			handle_passive_state(delta)
 		States.CALM:
 			handle_calm_state(delta)
+	
+	check_status()
 
 func handle_aggressive_state(delta: float) -> void:
 	detection_shape.disabled = false
@@ -65,6 +79,22 @@ func handle_calm_state(delta: float) -> void:
 	detection_shape.disabled = true
 	hit_box.disabled = true
 	max_speed = 0
+	
+	if trigger.check_dialog():
+		#taming
+		randomize()
+		Config.current_monster = monster_data.name
+		var roll = randi_range(0, 100)
+		if roll >= (recruitment_difficulty - Config.player_lvl):
+			extra_considerations["success"] = true
+		else:
+			extra_considerations["success"] = false
+		trigger.start_dialog(trigger.dialog, extra_considerations)
+		
+		if extra_considerations["success"]:
+			Config.debug_msg("Tamed a Monster!!")
+		
+		
 	if not chill_timer_running:
 		chill_timer_running = true
 		start_chill_timer()
@@ -117,3 +147,8 @@ func _on_hurt_box_area_entered(hitbox: Area2D) -> void:
 
 func _on_monster_died() -> void:
 	Config.debug_msg("Monster Killed!")
+
+
+func _on_dialog_trigger_component_dialog_finished() -> void:
+	Config.debug_msg("killing monster now...")
+	hp = 0

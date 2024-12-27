@@ -5,3 +5,7 @@
 [node name="HUD" type="CanvasLayer"]
 
 [node name="DialogBox" parent="." instance=ExtResource("1_ov105")]
+
+[connection signal="custom_signal_received" from="DialogBox/EzDialogue" to="DialogBox" method="_on_ez_dialogue_custom_signal_received"]
+
+[editable path="DialogBox"]

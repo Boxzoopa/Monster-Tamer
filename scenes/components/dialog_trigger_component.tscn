@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddro0vsigdqsv"]
+
+[ext_resource type="Script" path="res://script/dialog_trigger_component.gd" id="2_nluju"]
+[ext_resource type="Texture2D" uid="uid://5d2dx2qcfdbr" path="res://icon.svg" id="3_3xrer"]
+
+[node name="DialogTriggerComponent" type="Area2D" groups=["Hurtbox", "Interactable"]]
+self_modulate = Color(1, 0.129412, 0.180392, 1)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_nluju")
+
+[node name="Pointer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-4.76837e-07, -28)
+scale = Vector2(0.25, 0.0625)
+texture = ExtResource("3_3xrer")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

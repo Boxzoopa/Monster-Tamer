@@ -41,20 +41,25 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	get_movement_type(delta)
+	
+	check_status()
+
+func check_status():
+	if hp <= 0:
+		emit_signal("died")
+
+func get_movement_type(dt: float):
 	match movement_type:
 		Type.STATIC:
 			static_movement()
 		Type.AUTO:
-			auto_movement(delta)
+			auto_movement(dt)
 		Type.CONTROLLABLE:
 			controllable_movement()
 		Type.TARGET:
 			if target != null:
 				target_movement(target.global_position)
-	
-	if hp <= 0:
-		emit_signal("died")
-
 
 func static_movement() -> void:
 	input_vector = Vector2.ZERO
