@@ -1,0 +1,42 @@
+[
+	{
+		"commands_raw": "This is some Dialog\nIsn't this noice!\n\n?>Yes ->yes choice node\n\n$if !show_only_one {\n    ?>No ->no choice node\n}",
+		"gnode_name": "start",
+		"id": 0,
+		"name": "start",
+		"position": [
+			148.18180847168,
+			239.999984741211
+		]
+	},
+	{
+		"commands_raw": "Thanks for agreeing with me,\nYour cool\n---\nWait, you name is...\n${player_name}\n\n-> happy bye",
+		"gnode_name": "yes choice node",
+		"id": 1,
+		"name": "yes choice node",
+		"position": [
+			266.829956054688,
+			121.249145507813
+		]
+	},
+	{
+		"commands_raw": "Hmph!\nYou're a moodkiller\n\n?> replay -> start",
+		"gnode_name": "no choice node",
+		"id": 2,
+		"name": "no choice node",
+		"position": [
+			133.31608581543,
+			405.001892089844
+		]
+	},
+	{
+		"commands_raw": "buh bye",
+		"gnode_name": "happy bye",
+		"id": 3,
+		"name": "happy bye",
+		"position": [
+			446.576171875,
+			122.30672454834
+		]
+	}
+]

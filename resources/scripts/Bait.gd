@@ -1,4 +1,4 @@
-extends Resource
+extends Item
 class_name BaitData
 
 @export var size: Config.Bait_size = Config.Bait_size.SMALL

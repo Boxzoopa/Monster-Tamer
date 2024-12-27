@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://c708aa3wgoreb"]
+
+[ext_resource type="Script" path="res://resources/scripts/Monster.gd" id="1_1pdwu"]
+[ext_resource type="Script" path="res://resources/scripts/Skill.gd" id="2_e64w4"]
+[ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://resources/skills/skill_roar.tres" id="3_nbfyu"]
+[ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://resources/skills/skill_tackle.tres" id="4_sa6c4"]
+
+[resource]
+script = ExtResource("1_1pdwu")
+name = "Jelbo"
+nickname = ""
+type1 = 3
+type2 = 3
+entry = "No Information available"
+dex_num = 1
+level = 1
+exp = 0
+max_exp = 10
+health = 10
+power = 3
+defence = 2
+soul = 2
+speed = 50
+Bait_level = 1
+danger_level = 1
+skills = Array[ExtResource("2_e64w4")]([ExtResource("3_nbfyu"), ExtResource("4_sa6c4")])
+level_curve = 1

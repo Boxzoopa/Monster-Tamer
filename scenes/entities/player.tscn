@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_8mnlo"]
 [ext_resource type="Texture2D" uid="uid://bp83vf7ier870" path="res://assets/placeholder.png" id="2_g11fd"]
 [ext_resource type="Script" path="res://script/player.gd" id="2_lrq0g"]
-[ext_resource type="Resource" uid="uid://jdcmlnhyf2wl" path="res://Baits/bait_s.tres" id="3_uoks4"]
+[ext_resource type="Resource" uid="uid://jdcmlnhyf2wl" path="res://resources/items/baits/bait_s.tres" id="3_uoks4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tpuol"]
 radius = 6.0
@@ -12,6 +12,7 @@ radius = 6.0
 radius = 8.0
 
 [node name="Player" groups=["Player"] instance=ExtResource("1_8mnlo")]
+collision_mask = 79
 script = ExtResource("2_lrq0g")
 bait = ExtResource("3_uoks4")
 health = 10

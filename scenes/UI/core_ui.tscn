@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://byiavevoepr1p"]
+[gd_scene load_steps=10 format=3 uid="uid://byiavevoepr1p"]
 
+[ext_resource type="Script" path="res://script/core_ui.gd" id="1_4qhmm"]
 [ext_resource type="Texture2D" uid="uid://c5u2ixw73l5ag" path="res://assets/UI/heart.png" id="1_yyyxy"]
 [ext_resource type="Texture2D" uid="uid://bpebmflux6elo" path="res://assets/UI/coin.png" id="2_v1g78"]
 [ext_resource type="Texture2D" uid="uid://cuvw5bsrj5yv6" path="res://assets/UI/bait.png" id="3_0cs2b"]
@@ -34,6 +35,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_bxojf")
+script = ExtResource("1_4qhmm")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

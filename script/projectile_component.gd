@@ -1,4 +1,4 @@
-extends "res://script/hitbox_component.gd"
+class_name ProjectileComponent extends "res://script/hitbox_component.gd"
 
 @export var speed: int = 100
 

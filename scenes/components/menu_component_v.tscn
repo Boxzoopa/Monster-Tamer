@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ir10tfkwx2ae"]
+
+[ext_resource type="Script" path="res://script/menu_component_v.gd" id="1_fcq8f"]
+
+[node name="MenuComponentH" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_fcq8f")
+
+[connection signal="actioned" from="." to="." method="_on_actioned"]

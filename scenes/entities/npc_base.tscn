@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbj0xde0bdxln"]
+
+[ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_d5n7d"]
+[ext_resource type="Script" path="res://script/npc_base.gd" id="2_f1cnb"]
+[ext_resource type="Texture2D" uid="uid://5d2dx2qcfdbr" path="res://icon.svg" id="3_siall"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kn17w"]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf158"]
+size = Vector2(12, 12)
+
+[node name="NPCBase" groups=["NPC"] instance=ExtResource("1_d5n7d")]
+collision_layer = 66
+collision_mask = 75
+script = ExtResource("2_f1cnb")
+dialog = null
+movement_type = 1
+max_speed = 16.0
+
+[node name="HurtBox" parent="." index="0" groups=["Interactable"]]
+collision_layer = 1
+collision_mask = 2
+monitorable = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox" index="1"]
+shape = SubResource("CircleShape2D_kn17w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_nf158")
+
+[node name="pointer" type="Sprite2D" parent="." index="2"]
+visible = false
+position = Vector2(0, -24)
+scale = Vector2(0.0625, 0.125)
+texture = ExtResource("3_siall")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_exited" from="HurtBox" to="." method="_on_hurt_box_body_exited"]

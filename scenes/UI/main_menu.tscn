@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1hnmnvrrta23"]
+
+[ext_resource type="Script" path="res://script/menu_component_v.gd" id="1_4bu6k"]
+[ext_resource type="Texture2D" uid="uid://flmowj6s6dih" path="res://assets/UI/pointer.png" id="2_p47ou"]
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu_Component" type="VBoxContainer" parent="." node_paths=PackedStringArray("pointer")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 80.0
+offset_right = 784.0
+offset_bottom = 488.0
+script = ExtResource("1_4bu6k")
+pointer = NodePath("../Sprite2D")
+
+[node name="Label" type="Label" parent="Menu_Component"]
+layout_mode = 2
+text = "Yes"
+
+[node name="Label2" type="Label" parent="Menu_Component"]
+layout_mode = 2
+text = "No"
+
+[node name="Label3" type="Label" parent="Menu_Component"]
+layout_mode = 2
+text = "Maybe"
+
+[node name="Label4" type="Label" parent="Menu_Component"]
+layout_mode = 2
+text = "Definitely"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_p47ou")

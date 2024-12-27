@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://cd35uds53pbjd"]
 
-[ext_resource type="Script" path="res://Global/Monster.gd" id="1_cj32i"]
-[ext_resource type="Script" path="res://Global/Skill.gd" id="2_p8ess"]
-[ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://MonsterDatabase/Skills/skill_roar.tres" id="3_vw2ai"]
-[ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://MonsterDatabase/Skills/skill_tackle.tres" id="4_o5dgg"]
+[ext_resource type="Script" path="res://resources/scripts/Monster.gd" id="1_cj32i"]
+[ext_resource type="Script" path="res://resources/scripts/Skill.gd" id="2_p8ess"]
+[ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://resources/skills/skill_roar.tres" id="3_vw2ai"]
+[ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://resources/skills/skill_tackle.tres" id="4_o5dgg"]
 
 [resource]
 script = ExtResource("1_cj32i")

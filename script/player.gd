@@ -53,6 +53,8 @@ func _physics_process(delta: float) -> void:
 		throwing_bait = true
 		can_throw_bait = false
 		throw_timer = throw_bait_timer
+	
+	Config.player_hp = hp
 
 
 func throw_bait():

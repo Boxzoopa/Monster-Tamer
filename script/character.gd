@@ -36,7 +36,11 @@ var hp: int:
 		return _hp
 var defence: int
 
+func _process(delta: float) -> void:
+	set_physics_process(Config.active)
+
 func _physics_process(delta: float) -> void:
+	
 	match movement_type:
 		Type.STATIC:
 			static_movement()

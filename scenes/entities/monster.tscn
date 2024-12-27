@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://beywkyu68xkel" path="res://scenes/entities/character.tscn" id="1_7vfh6"]
 [ext_resource type="Script" path="res://script/monster.gd" id="2_44fp1"]
-[ext_resource type="Resource" uid="uid://bre0eep0cdgnk" path="res://MonsterDatabase/Monsters/mon_0.tres" id="3_tfj0j"]
+[ext_resource type="Resource" uid="uid://bre0eep0cdgnk" path="res://resources/monsters/mon_0.tres" id="3_tfj0j"]
 [ext_resource type="PackedScene" uid="uid://ddn6600l7nlbx" path="res://scenes/components/hitbox_component.tscn" id="4_cert2"]
 [ext_resource type="PackedScene" uid="uid://c26dpy21ikfsd" path="res://scenes/entities/overworld_mon_sprite.tscn" id="5_6cltv"]
 

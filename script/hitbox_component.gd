@@ -1,4 +1,4 @@
-extends Area2D
+class_name HitboxComponent extends Area2D
 
 @export var damage: int = 3
 @onready var shape: CollisionShape2D = $CollisionShape2D

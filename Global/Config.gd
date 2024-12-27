@@ -19,15 +19,13 @@ enum Bait_size {
 var print_debug = true # prints out any debug msg
 var scale = 1 # camera scale
 
+var player_name = "Kuro"
+var player_hp = 10
+var player_coins = 0
+var player_baits = 0
+
+var active= true
+
 func debug_msg(msg):
 	if print_debug == true:
 		print('[DEBUG] ' + msg)
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
