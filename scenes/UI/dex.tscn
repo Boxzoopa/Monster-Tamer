@@ -47,3 +47,8 @@ size_flags_horizontal = 3
 
 [node name="MonPrev" parent="MainContainer/HBox" instance=ExtResource("2_4brt8")]
 layout_mode = 2
+standalone = false
+
+[node name="Label2" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Z(Exit)"

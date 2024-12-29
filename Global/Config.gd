@@ -44,6 +44,7 @@ var player_lvl = 1
 var player_hp = 10
 var player_coins = 0
 var player_baits = 0
+var player_in_dialog =false
 
 var active= true
 

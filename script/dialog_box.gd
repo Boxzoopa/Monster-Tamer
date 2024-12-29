@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func start_dialog(dialog: JSON = dialog_json, _state : Dictionary = state, cause = null) -> void:
 	cause_node = cause
+	Config.player_in_dialog = true
 	Config.active = false
 	self.visible = true
 	ez_dialogue.start_dialogue(dialog, _state)
@@ -66,6 +67,7 @@ func _on_ez_dialogue_dialogue_generated(response: DialogueResponse) -> void:
 func _on_dialog_finished() -> void:
 	self.visible = false
 	Config.active = true
+	Config.player_in_dialog = false
 	if cause_node != null:
 		cause_node.dialog_finished.emit()
 

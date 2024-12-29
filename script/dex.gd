@@ -34,14 +34,18 @@ func _process(delta: float) -> void:
 				mon_desc.text = "No Description Available"
 				mon_type_label.text = "???"
 
+func get_focus():
+	v_box.get_child(0).grab_focus()
+
 func load_monsters():
 	for monster in MD.monsters:
 		if monster.name != "???":
 			var button_obj: DexButton = button_scn.instantiate()
-			button_obj.text = monster.name
+			if monster.seen:
+				button_obj.text = monster.name
+			else:
+				button_obj.text = "???"
 			button_obj.monster = monster
 			btns.push_back(button_obj)
 			v_box.add_child(button_obj)
-			v_box.get_child(0).grab_focus()
-	
-	
+			get_focus()

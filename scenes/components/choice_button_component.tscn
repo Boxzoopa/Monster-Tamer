@@ -20,4 +20,5 @@ text = "
 "
 script = ExtResource("1_2rlj7")
 
+[connection signal="focus_selected" from="." to="." method="_on_focus_selected"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

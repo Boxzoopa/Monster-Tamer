@@ -1,10 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://rwu3ht3hytgm"]
+[gd_scene load_steps=5 format=3 uid="uid://rwu3ht3hytgm"]
 
 [ext_resource type="PackedScene" uid="uid://ldl55qs8l3xe" path="res://scenes/UI/dialog_box.tscn" id="1_ov105"]
+[ext_resource type="PackedScene" uid="uid://byiavevoepr1p" path="res://scenes/UI/core_ui.tscn" id="2_pt87i"]
+[ext_resource type="PackedScene" uid="uid://uj2iboogruej" path="res://scenes/UI/dex.tscn" id="3_pscpm"]
+[ext_resource type="PackedScene" uid="uid://8oyce5mvqggj" path="res://scenes/components/dex_preview_component.tscn" id="4_h3n6e"]
 
 [node name="HUD" type="CanvasLayer"]
 
 [node name="DialogBox" parent="." instance=ExtResource("1_ov105")]
+
+[node name="UI" parent="." instance=ExtResource("2_pt87i")]
+
+[node name="Dex" parent="UI" instance=ExtResource("3_pscpm")]
+visible = false
+layout_mode = 1
+
+[node name="DexPrev" parent="UI" instance=ExtResource("4_h3n6e")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -311.0
+offset_top = -244.0
+offset_right = 311.0
+offset_bottom = 244.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="custom_signal_received" from="DialogBox/EzDialogue" to="DialogBox" method="_on_ez_dialogue_custom_signal_received"]
 

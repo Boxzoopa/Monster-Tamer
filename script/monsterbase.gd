@@ -152,3 +152,7 @@ func _on_monster_died() -> void:
 func _on_dialog_trigger_component_dialog_finished() -> void:
 	Config.debug_msg("killing monster now...")
 	hp = 0
+	
+	var dex_prev = Hud.get_node("UI/DexPrev")
+	dex_prev.load_data(monster_data)
+	dex_prev.show_entry()

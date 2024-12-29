@@ -12,6 +12,7 @@ script = ExtResource("1_aim1g")
 [node name="MonName" type="Label" parent="."]
 layout_mode = 2
 text = "Monster Name"
+horizontal_alignment = 1
 
 [node name="MonTexture" type="TextureRect" parent="."]
 clip_contents = true
@@ -44,3 +45,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "No Description Available"
 autowrap_mode = 3
+
+[node name="CloseInfo" type="Label" parent="."]
+layout_mode = 2
+text = "Press Z to close"

@@ -1,7 +1,5 @@
-[gd_scene load_steps=10 format=4 uid="uid://dvgxp8aqacbbb"]
+[gd_scene load_steps=8 format=4 uid="uid://dvgxp8aqacbbb"]
 
-[ext_resource type="PackedScene" uid="uid://byiavevoepr1p" path="res://scenes/UI/core_ui.tscn" id="1_xhpng"]
-[ext_resource type="PackedScene" uid="uid://ldl55qs8l3xe" path="res://scenes/UI/dialog_box.tscn" id="2_nq035"]
 [ext_resource type="Resource" uid="uid://c708aa3wgoreb" path="res://resources/monsters/mon_1.tres" id="3_jwqrl"]
 [ext_resource type="PackedScene" uid="uid://dttred7ywb32v" path="res://scenes/entities/monster_base.tscn" id="4_akh3i"]
 [ext_resource type="PackedScene" uid="uid://h5psmhgkromk" path="res://scenes/entities/player.tscn" id="4_keg0g"]
@@ -13,12 +11,6 @@
 radius = 6.0
 
 [node name="test_world" type="Node2D"]
-
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="UI" parent="HUD" instance=ExtResource("1_xhpng")]
-
-[node name="DialogBox" parent="HUD" instance=ExtResource("2_nq035")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
