@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://bre0eep0cdgnk"]
+[gd_resource type="Resource" script_class="MonsterData" load_steps=6 format=3 uid="uid://bre0eep0cdgnk"]
 
 [ext_resource type="Script" path="res://resources/scripts/Monster.gd" id="1_2fgl8"]
 [ext_resource type="Script" path="res://resources/scripts/Skill.gd" id="2_ytiv8"]
 [ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://resources/skills/skill_tackle.tres" id="3_7ymwt"]
 [ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://resources/skills/skill_roar.tres" id="4_yalvc"]
+[ext_resource type="Texture2D" uid="uid://dlt2g3efv1gy1" path="res://assets/monsters/battle/mon_1.png" id="5_ksg00"]
 
 [resource]
 script = ExtResource("1_2fgl8")
@@ -11,8 +12,11 @@ name = "???"
 nickname = ""
 type1 = 0
 type2 = 0
+seen = false
+tamed = false
 entry = ""
 dex_num = 0
+sprite = ExtResource("5_ksg00")
 level = 1
 exp = 0
 max_exp = 10

@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://8oyce5mvqggj"]
+
+[ext_resource type="Script" path="res://script/dex_preview_component.gd" id="1_aim1g"]
+[ext_resource type="Texture2D" uid="uid://bhhhwu4mdprso" path="res://assets/monsters/battle/mon_0.png" id="1_x4036"]
+
+[node name="DexPreviewComponent" type="VBoxContainer"]
+offset_right = 622.0
+offset_bottom = 488.0
+size_flags_horizontal = 3
+script = ExtResource("1_aim1g")
+
+[node name="MonName" type="Label" parent="."]
+layout_mode = 2
+text = "Monster Name"
+
+[node name="MonTexture" type="TextureRect" parent="."]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_x4036")
+stretch_mode = 5
+
+[node name="MonType" type="Panel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="MonTypeLabel" type="Label" parent="MonType"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Type: "
+
+[node name="MonInfo" type="Panel" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MonDesc" type="Label" parent="MonInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "No Description Available"
+autowrap_mode = 3

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bglrnibdwpfd4"]
+
+[ext_resource type="PackedScene" uid="uid://d0rewo6nf6w2p" path="res://scenes/components/button_component.tscn" id="1_iiudw"]
+[ext_resource type="Script" path="res://script/dex_button_component.gd" id="2_46a7u"]
+
+[node name="DexButtonComponent" instance=ExtResource("1_iiudw")]
+script = ExtResource("2_46a7u")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

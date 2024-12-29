@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://c708aa3wgoreb"]
+[gd_resource type="Resource" script_class="MonsterData" load_steps=6 format=3 uid="uid://c708aa3wgoreb"]
 
 [ext_resource type="Script" path="res://resources/scripts/Monster.gd" id="1_1pdwu"]
 [ext_resource type="Script" path="res://resources/scripts/Skill.gd" id="2_e64w4"]
 [ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://resources/skills/skill_roar.tres" id="3_nbfyu"]
 [ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://resources/skills/skill_tackle.tres" id="4_sa6c4"]
+[ext_resource type="Texture2D" uid="uid://dlt2g3efv1gy1" path="res://assets/monsters/battle/mon_1.png" id="5_0t3wr"]
 
 [resource]
 script = ExtResource("1_1pdwu")
@@ -11,8 +12,11 @@ name = "Jelbo"
 nickname = ""
 type1 = 3
 type2 = 3
-entry = "No Information available"
+seen = false
+tamed = false
+entry = "A slime that disguises itself a piece of food to make unsuspecting travellers its prey."
 dex_num = 1
+sprite = ExtResource("5_0t3wr")
 level = 1
 exp = 0
 max_exp = 10

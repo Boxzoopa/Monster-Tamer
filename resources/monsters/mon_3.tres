@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="MonsterData" load_steps=6 format=3 uid="uid://o5q7hmnudpen"]
+
+[ext_resource type="Script" path="res://resources/scripts/Monster.gd" id="1_20ttk"]
+[ext_resource type="Script" path="res://resources/scripts/Skill.gd" id="2_cyqp7"]
+[ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://resources/skills/skill_roar.tres" id="3_spop7"]
+[ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://resources/skills/skill_tackle.tres" id="4_h53j6"]
+[ext_resource type="Texture2D" uid="uid://cuwmxr5wymmbt" path="res://assets/monsters/battle/mon_3.png" id="5_ceemj"]
+
+[resource]
+script = ExtResource("1_20ttk")
+name = "Saublob"
+nickname = ""
+type1 = 3
+type2 = 13
+seen = false
+tamed = false
+entry = "After ditching cooking due to people’s dislike of its meals, Saublob spends it’s days causing havoc with it’s poisonous body and sharp fork"
+dex_num = 2
+sprite = ExtResource("5_ceemj")
+level = 1
+exp = 0
+max_exp = 10
+health = 30
+power = 6
+defence = 7
+soul = 4
+speed = 70
+Bait_level = 1
+danger_level = 0
+skills = Array[ExtResource("2_cyqp7")]([ExtResource("3_spop7"), ExtResource("4_h53j6")])
+level_curve = 1

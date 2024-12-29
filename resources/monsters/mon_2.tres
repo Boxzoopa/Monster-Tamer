@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="MonsterData" load_steps=5 format=3 uid="uid://cd35uds53pbjd"]
+[gd_resource type="Resource" script_class="MonsterData" load_steps=6 format=3 uid="uid://cd35uds53pbjd"]
 
 [ext_resource type="Script" path="res://resources/scripts/Monster.gd" id="1_cj32i"]
 [ext_resource type="Script" path="res://resources/scripts/Skill.gd" id="2_p8ess"]
 [ext_resource type="Resource" uid="uid://d0gtxc4re2h5i" path="res://resources/skills/skill_roar.tres" id="3_vw2ai"]
 [ext_resource type="Resource" uid="uid://qug3jje6lqqm" path="res://resources/skills/skill_tackle.tres" id="4_o5dgg"]
+[ext_resource type="Texture2D" uid="uid://d4gstxi262vfi" path="res://assets/monsters/battle/mon_2.png" id="5_rddyx"]
 
 [resource]
 script = ExtResource("1_cj32i")
@@ -11,8 +12,11 @@ name = "Cuislop"
 nickname = ""
 type1 = 3
 type2 = 3
-entry = "No Information available"
+seen = false
+tamed = false
+entry = "Cuislop's are culinary slime, however, the food it makes is highly poinsonous. They use a spoon as a catpult"
 dex_num = 2
+sprite = ExtResource("5_rddyx")
 level = 1
 exp = 0
 max_exp = 10

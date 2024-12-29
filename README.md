@@ -10,6 +10,8 @@
 
 - [x] Taming Monsters
 
+- [x] Dex
+
 - [ ] Attacks and Moves
 
 - [ ] Fighting with Monsters
